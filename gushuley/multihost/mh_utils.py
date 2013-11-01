@@ -11,7 +11,7 @@ from gushuley.multihost import models
 __author__ = 'andriy'
 
 _sites = {}
-__default_site = None
+_default_site = None
 
 
 def get_current_site():
@@ -22,7 +22,7 @@ def get_current_site():
 
 def mh_reverse(name, site, is_external=False, args=None, kwargs=None):
     if not site:
-        site = default_site
+        site = _default_site
 
     if is_external or get_current_site() != site:
         return site.site.domain + reverse(name, urlconf=site.urls_module, args=args, kwargs=kwargs)
@@ -35,11 +35,11 @@ class MultiHostMiddleware:
         pass
 
     def process_request(self, request):
-        global default_site
-        if not default_site:
-            default_site = models.Site()
-            default_site.site = django.contrib.sites.models.Site.objects.get(id=settings.SITE_ID)
-            default_site.urls_module = settings.ROOT_URLCONF
+        global  _default_site
+        if not _default_site:
+            _default_site = models.Site()
+            _default_site.site = django.contrib.sites.models.Site.objects.get(id=settings.SITE_ID)
+            _default_site.urls_module = settings.ROOT_URLCONF
 
         _host = request.META["HTTP_HOST"]
         site = None
@@ -63,7 +63,7 @@ class MultiHostMiddleware:
             try:
                 site = models.Site.objects.get(site__id__exact=settings.SITE_ID)
             except ObjectDoesNotExist:
-                site = default_site
+                site = _default_site
         _sites[currentThread()] = site
 
     def process_response(self, request, response):

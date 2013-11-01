@@ -6,7 +6,7 @@ import re
 from django.utils.encoding import smart_str
 from gushuley.multihost import models
 import django.contrib.sites.models
-from gushuley.multihost.mh_utils import get_current_site
+from gushuley.multihost.mh_utils import get_current_site, mh_reverse
 
 
 class MHReverseNode(Node):
@@ -40,7 +40,7 @@ class MHReverseNode(Node):
 
 
 kwarg_re = re.compile(r"(?:(\w+)=)?(.+)")
-def mh_reverse(parser, token):
+def mh_reverse_tag(parser, token):
     bits = token.split_contents()
     if len(bits) < 2:
         raise TemplateSyntaxError("'%s' takes at least two argument"
@@ -107,4 +107,4 @@ def mh_reverse(parser, token):
     return MHReverseNode(viewname, site, args, kwargs, asvar, site_inst)
 
 register = template.Library()
-register.tag(mh_reverse)
+register.tag(compile_function=mh_reverse_tag, name='mh_reverse')
