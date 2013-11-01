@@ -8,3 +8,6 @@ media/kol/**
 *.iml
 local_settings.py
 static/**
+dist
+*.egg-info
+build

@@ -2,7 +2,7 @@
 
 # from distutils.core import setup
 from setuptools import setup, find_packages
-import metadata
+from gushuley.multihost import metadata
 
 app_name = metadata.name
 version = metadata.version
@@ -18,17 +18,17 @@ setup(
                   "and urlconfs in one django application instance",
     long_description = \
 """
-django-gu-multihost
+gu-django-multihost
 ===
 
-**django-gu-multihost** is a Django application/framework which allow to serve different hostnames "
+**gu-django-multihost** is a Django application/framework which allow to serve different hostnames "
                   "and urlconfs in one django application instance
 Quickstart:
 ===
 
-Install django-gu-multihost:
+Install gu-django-multihost:
 
-    $ pip install django-gu-multihost
+    $ pip install gu-django-multihost
 
 Add gu-multihost to INSTALLED_APPS in settings.py for your project:
 

@@ -6,6 +6,8 @@ import re
 from django.utils.encoding import smart_str
 from gushuley.multihost import models
 import django.contrib.sites.models
+from gushuley.multihost.mh_utils import get_current_site
+
 
 class MHReverseNode(Node):
     def __init__(self, view_name, site, args, kwargs, asvar, site_ins):
@@ -28,7 +30,7 @@ class MHReverseNode(Node):
                 del kwargs[k]
                 break
           
-        url = gushuley.multihost.mh_reverse(self.view_name, site, is_external, args, kwargs)
+        url = mh_reverse(self.view_name, site, is_external, args, kwargs)
 
         if self.asvar:
             context[self.asvar] = url
