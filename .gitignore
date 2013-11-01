@@ -1,0 +1,10 @@
+*.log
+*.pot
+**.pyc
+media/kol/**
+**~
+.hg/**
+.idea/**
+*.iml
+local_settings.py
+static/**
