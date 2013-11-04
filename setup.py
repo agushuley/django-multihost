@@ -1,11 +1,15 @@
 #!/usr/bin/env python
 
-# from distutils.core import setup
+import os
 from setuptools import setup, find_packages
 from gushuley.multihost import metadata
 
 app_name = metadata.name
 version = metadata.version
+
+
+def read(fname):
+    return open(os.path.join(os.path.dirname(__file__), fname)).read()
 
 setup(
     name = app_name,
@@ -16,10 +20,7 @@ setup(
     author_email = "agushuley@me.com",
     description = "A Django application/framework which allow to serve different hostnames "
                   "and urlconfs in one django application instance",
-    long_description = \
-"""
-[https://github.com/agushuley/gu-multihost]
-""",
+    long_description = read("README.md"),
     license = "MIT License",
     keywords = "django multihost framework",
     classifiers = [
@@ -34,5 +35,6 @@ setup(
         'Topic :: Software Development :: Libraries :: Python Modules',
     ],
     platforms = ['any'],
-    url = "https://github.com/agushuley/gu-multihost",
+    url = "https://github.com/agushuley/django-multihost",
+    requires=['django'],
 )
