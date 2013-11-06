@@ -20,10 +20,7 @@ setup(
     author_email = "agushuley@me.com",
     description = "A Django application/framework which allow to serve different hostnames "
                   "and urlconfs in one django application instance",
-    long_description = \
-"""
-[https://github.com/agushuley/django-multihost]
-""",
+    long_description = read('README.md'),
     license = "MIT License",
     keywords = "django multihost framework",
     classifiers = [

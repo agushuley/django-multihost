@@ -18,11 +18,11 @@ Add gu-multihost to INSTALLED_APPS in settings.py for your project:
     )
 
     #multihost
-    MULTIHOST_DATABASE_DRIVEN_URLS = True # means
+    MULTIHOST_DATABASE_DRIVEN_URLS = True # means that list or url modules are stored in database and managed there
 
     #for MULTIHOST_DATABASE_DRIVEN_URLS = False make a list possilbe selections for sites urls
     from gushuley.multihost import MULTIHOST_DEFAULT_URLS
-    MULTIHOST_AVAILABLE_URLS = MULTIHOST_DEFAULT_URLS + ['app.urls', ]
+    MULTIHOST_AVAILABLE_URLS = MULTIHOST_DEFAULT_URLS + [ROOT_URLCONF, ]
 
 Add middleware class fetch from cache middleware :
 

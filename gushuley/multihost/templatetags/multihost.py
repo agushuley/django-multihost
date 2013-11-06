@@ -41,7 +41,7 @@ class MHReverseNode(Node):
 kwarg_re = re.compile(r"(?:(\w+)=)?(.+)")
 def mh_reverse_tag(parser, token):
     bits = token.split_contents()
-    if len(bits) < 2:
+    if len(bits) < 3:
         raise TemplateSyntaxError("'%s' takes at least two argument"
                                   " (path to a view) (site)" % bits[0])
     viewname = bits[1]
