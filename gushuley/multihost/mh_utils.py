@@ -32,10 +32,12 @@ def mh_reverse(name, site, is_external=False, args=None, kwargs=None):
     if not site:
         site = get_current_site()
 
+    urlconf = None if not site.urls_module else str(site.urls_module)
+    url = reverse(name, urlconf=urlconf, args=args, kwargs=kwargs)
     if is_external or get_current_site() != site:
-        return site.site.domain + reverse(name, urlconf=site.urls_module, args=args, kwargs=kwargs)
+        return site.site.domain + url
     else:
-        return reverse(name, urlconf=site.urls_module, args=args, kwargs=kwargs)
+        return url
 
 
 def _process_request(request):
@@ -51,7 +53,7 @@ def _process_request(request):
         r = re.compile(host.host_regexp)
         if r.match(_host):
             if host.urls_module:
-                setattr(request, "urlconf", host.urls_module)
+                setattr(request, "urlconf", str(host.urls_module))
             else:
                 if hasattr(request, "urlconf"):
                     delattr(request, "urlconf")

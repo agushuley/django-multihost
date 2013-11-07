@@ -13,13 +13,13 @@ if is_database_driven_modules_urls():
 
 def get_module_urls_column(field_name):
     if is_database_driven_modules_urls():
-        return models.ForeignKey(ModuleUrls, db_column=field_name)
+        return models.ForeignKey(ModuleUrls, db_column=field_name, blank=True, null=True,)
     else:
         return models.CharField(max_length=255, blank=True, null=True, choices=get_available_urls(), db_column=field_name)
 
 
 class Site(models.Model):
-    site = models.ForeignKey(DjangoSite)
+    site = models.OneToOneField(DjangoSite)
     host_regexp = models.CharField(max_length=255)
     urls_module = get_module_urls_column('urls_module')
     order = models.IntegerField(db_column="_order")
