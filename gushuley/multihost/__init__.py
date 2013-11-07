@@ -3,7 +3,7 @@
 from django.conf import settings
 
 MULTIHOST_DEFAULT_URLS = [
-  'gushuley.multisite.urls',
+  'gushuley.multihost.urls',
 ]
 
 
