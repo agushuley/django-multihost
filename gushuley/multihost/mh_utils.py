@@ -30,7 +30,7 @@ def get_default_site():
 def mh_reverse(name, site, is_external=False, args=None, kwargs=None):
     global __default_site
     if not site:
-        site = __default_site
+        site = get_current_site()
 
     if is_external or get_current_site() != site:
         return site.site.domain + reverse(name, urlconf=site.urls_module, args=args, kwargs=kwargs)
