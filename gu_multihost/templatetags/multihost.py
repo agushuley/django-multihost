@@ -5,7 +5,7 @@ from django.contrib.sites import models as sites_models
 import re
 from django.template.base import FilterExpression
 from django.utils.encoding import smart_str
-from .. import mh_utils
+from .. import mh_reverse
 from .. import models
 
 
@@ -38,7 +38,7 @@ class MHReverseNode(Node):
                 del kwargs[k]
                 break
           
-        url = mh_utils.mh_reverse(view, site, is_external, args, kwargs)
+        url = mh_reverse(view, site, is_external, args, kwargs)
 
         if self.as_var:
             context[self.as_var] = url
