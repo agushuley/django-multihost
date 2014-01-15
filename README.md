@@ -1,14 +1,14 @@
-django-gu-multihost
+gu-django-multihost
 ===
 
-**django-gu-multihost** is a Django application/framework which allow to serve different hostnames "
+**gu-django-multihost** is a Django application/framework which allow to serve different hostnames "
                   "and urlconfs in one django application instance
 Quickstart:
 ===
 
-Install django-gu-multihost:
+Install gu-django-multihost:
 
-    $ pip install django-gu-multihost
+    $ pip install gu-django-multihost
 
 Add gu-multihost to INSTALLED_APPS in settings.py for your project:
 
@@ -16,6 +16,13 @@ Add gu-multihost to INSTALLED_APPS in settings.py for your project:
         ...
         'gu_multihost',
     )
+
+    #multihost
+    MULTIHOST_DATABASE_DRIVEN_URLS = True # means
+
+    #for MULTIHOST_DATABASE_DRIVEN_URLS = False make a list possilbe selections for sites urls
+    from gushuley.multihost import MULTIHOST_DEFAULT_URLS
+    MULTIHOST_AVAILABLE_URLS = MULTIHOST_DEFAULT_URLS + ['app.urls', ]
 
 Add middleware class fetch from cache middleware :
 

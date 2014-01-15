@@ -1,11 +1,15 @@
 #!/usr/bin/env python
 
-# from distutils.core import setup
+import os
 from setuptools import setup, find_packages
 from gu_multihost import metadata
 
 app_name = metadata.name
 version = metadata.version
+
+
+def read(fname):
+    return open(os.path.join(os.path.dirname(__file__), fname)).read()
 
 setup(
     name = app_name,
@@ -18,7 +22,7 @@ setup(
                   "and urlconfs in one django application instance",
     long_description = \
 """
-[https://github.com/agushuley/gu-multihost]
+[https://github.com/agushuley/django-multihost]
 """,
     license = "MIT License",
     keywords = "django multihost framework",
@@ -34,5 +38,6 @@ setup(
         'Topic :: Software Development :: Libraries :: Python Modules',
     ],
     platforms = ['any'],
-    url = "https://github.com/agushuley/gu-multihost",
+    url = "https://github.com/agushuley/django-multihost",
+    requires=['django'],
 )
