@@ -2,7 +2,7 @@
 
 # from distutils.core import setup
 from setuptools import setup, find_packages
-from gushuley.multihost import metadata
+from gu_multihost import metadata
 
 app_name = metadata.name
 version = metadata.version

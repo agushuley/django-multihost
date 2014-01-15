@@ -14,14 +14,14 @@ Add gu-multihost to INSTALLED_APPS in settings.py for your project:
 
     INSTALLED_APPS = (
         ...
-        'gushuley.multihost',
+        'gu_multihost',
     )
 
 Add middleware class fetch from cache middleware :
 
     MIDDLEWARE_CLASSES += (
         # should be called after FetchFromCacheMiddleware
-        'gushuley.multihost.mh_utils.MultiHostMiddleware',
+        'gu_multihost.mh_utils.MultiHostMiddleware',
         'django.middleware.cache.FetchFromCacheMiddleware',
         )
 
@@ -33,7 +33,7 @@ Standard core django sites host names should be configured to actual accesible d
 
 In your code:
 
-    from gushuley.multihost import mh_utils
+    from gu_multihost import mh_utils
 
 Yu can query current site, which serves a request:
 

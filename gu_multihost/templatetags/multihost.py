@@ -1,12 +1,11 @@
 
 from django import template
 from django.template import TemplateSyntaxError, Node
-import gushuley.multihost
 import re
 from django.utils.encoding import smart_str
-from gushuley.multihost import models
+from .. import models
 import django.contrib.sites.models
-from gushuley.multihost.mh_utils import get_current_site, mh_reverse
+from ..mh_utils import mh_reverse
 
 
 class MHReverseNode(Node):

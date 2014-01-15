@@ -1,4 +1,4 @@
-from gushuley.multihost.models import Site
+from .models import Site
 from django.contrib import admin
 
 class SiteAdmin(admin.ModelAdmin):
