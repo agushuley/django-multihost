@@ -10,6 +10,9 @@ if is_database_driven_modules_urls():
         def __unicode__(self):
             return u'%s' % self.module_urls
 
+        class Meta:
+            db_table = u"multihost_moduleurls"
+
 
 def get_module_urls_column(field_name):
     if is_database_driven_modules_urls():

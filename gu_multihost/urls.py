@@ -5,11 +5,11 @@ except ImportError:
     from django.conf.urls.defaults import handler404, handler500, patterns,\
     url
 from django.http import HttpResponsePermanentRedirect
-from . import mh_utils
+from . import get_default_site
 
 
 def redirect(req, path):
-    return HttpResponsePermanentRedirect(u'%s/%s' % (mh_utils.get_default_site().site.domain, path,))
+    return HttpResponsePermanentRedirect(u'%s/%s' % (get_default_site().site.domain, path,))
 
 urlpatterns = patterns('',
      url(r'^(?P<path>.*)$', redirect),
