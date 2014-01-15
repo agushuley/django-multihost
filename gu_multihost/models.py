@@ -31,4 +31,5 @@ class Site(models.Model):
         return u'%s' % self.host_regexp
 
     class Meta:
+        db_table = u"multihost_site"
         ordering = ['order']
