@@ -6,7 +6,7 @@ from django.conf import settings
 from django.core.urlresolvers import reverse
 
 MULTIHOST_DEFAULT_URLS = [
-  'gushuley.multihost.urls',
+  'gu_multihost.urls',
 ]
 
 
@@ -21,7 +21,6 @@ def is_database_driven_modules_urls():
 __sites = {}
 __default_site = None
 
-
 def get_current_site():
     if currentThread() in __sites:
         return __sites[currentThread()]
@@ -33,12 +32,14 @@ def set_current_site(site):
 
 
 def get_default_site(fail=False):
+    global __default_site
     if not __default_site and fail:
         raise ValueError("Default site is not defined yet")
     return __default_site
 
 
 def set_default_site(site):
+    global __default_site
     __default_site = site
 
 
