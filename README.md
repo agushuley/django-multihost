@@ -18,17 +18,17 @@ Add gu-multihost to INSTALLED_APPS in settings.py for your project:
     )
 
     #multihost
-    MULTIHOST_DATABASE_DRIVEN_URLS = True # means
+    MULTIHOST_DATABASE_DRIVEN_URLS = True # means that list or url modules are stored in database and managed there
 
     #for MULTIHOST_DATABASE_DRIVEN_URLS = False make a list possilbe selections for sites urls
-    from gushuley.multihost import MULTIHOST_DEFAULT_URLS
-    MULTIHOST_AVAILABLE_URLS = MULTIHOST_DEFAULT_URLS + ['app.urls', ]
+    from gu_multihost import MULTIHOST_DEFAULT_URLS
+    MULTIHOST_AVAILABLE_URLS = MULTIHOST_DEFAULT_URLS + [ROOT_URLCONF, ]
 
 Add middleware class fetch from cache middleware :
 
     MIDDLEWARE_CLASSES += (
         # should be called after FetchFromCacheMiddleware
-        'gu_multihost.mh_utils.MultiHostMiddleware',
+        'gu_multihost.middleware.MultiHostMiddleware',
         'django.middleware.cache.FetchFromCacheMiddleware',
         )
 
@@ -40,23 +40,23 @@ Standard core django sites host names should be configured to actual accesible d
 
 In your code:
 
-    from gu_multihost import mh_utils
+    import gu_multihost
 
 Yu can query current site, which serves a request:
 
-    mh_utils.get_current_site.site # link to django site object
+    gu_multihost.get_current_site.site # link to django site object
 
 You can build urls for different sites with a full url.
 
-    mh_utils.mh_reverse(news_item, site=None, full_url=False, [site.two_letter_code, nid])
+    gu_multihost.mh_reverse(news_item, site=None, full_url=False, [site.two_letter_code, nid])
 
 Build short url for default site - /BB/news/item/XXX/
 
-    mh_utils.mh_reverse(news_item, site=None, full_url=False, [site.two_letter_code, nid])
+    gu_multihost.mh_reverse(news_item, site=None, full_url=False, [site.two_letter_code, nid])
 
 Build full url for default site - http://default.site/BB/news/item/XXX/
 
-    mh_utils.mh_reverse(news_item, site=mobile, full_url=False, [site.two_letter_code, nid])
+    gu_multihost.mh_reverse(news_item, site=mobile, full_url=False, [site.two_letter_code, nid])
 
 Build full url for separate site - http://mobile.site/BB/ni/XXX/
 
